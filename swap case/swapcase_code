@@ -1,0 +1,12 @@
+def swap_case(s):
+    p=[]
+    for i in s:
+        if(i.islower()):
+             p.append(i.upper())
+        else:
+            p.append(i.lower())
+    return "".join(p);
+if __name__ == '__main__':
+    s = input()
+    result = swap_case(s)
+    print(result)
