@@ -1,0 +1,24 @@
+typedef struct triangle triangle;
+
+/* function declaration */
+double area(triangle t);
+
+void sort_by_area(triangle* tr, int n) {
+    int i, j;
+    for (i = 0; i < n - 1; i++) {
+        for (j = i + 1; j < n; j++) {
+            if (area(tr[i]) > area(tr[j])) {
+                triangle temp = tr[i];
+                tr[i] = tr[j];
+                tr[j] = temp;
+            }
+        }
+    }
+}
+
+/* function definition */
+double area(triangle t) {
+    double s;
+    s = (t.a + t.b + t.c) / 2.0;
+    return sqrt(s * (s - t.a) * (s - t.b) * (s - t.c));
+}
