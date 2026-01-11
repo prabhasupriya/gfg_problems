@@ -1,0 +1,333 @@
+#include <iostream>
+#include <ctime>
+#include <fstream>
+#include <cmath>
+#include <cstring>
+#include <cassert>
+#include <cstdio>
+#include <algorithm>
+#include <iomanip>
+#include <vector>
+#include <stack>
+#include <queue>
+#include <set>
+#include <map>
+#include <complex>
+#include <utility>
+#include <cctype>
+#include <list>
+
+using namespace std;
+
+#define FORALL(i,a,b) for(int i=(a);i<=(b);++i)
+#define FOR(i,n) for(int i=0;i<(n);++i)
+#define FORB(i,a,b) for(int i=(a);i>=(b);--i)
+
+typedef long long ll;
+typedef pair<int,int> pii;
+typedef map<int,int> mii;
+
+#define pb push_back
+#define mp make_pair
+
+#define INF 1000000000000001000ll
+#define MAXG 27
+#define MAXN 600010
+
+#define NO_ASSERT
+#ifndef REGULAR_ASSERT
+    #ifndef NO_ASSERT
+        #undef assert
+        #define assert sassert
+    #else
+        #undef assert
+        #define assert(x)
+    #endif
+#endif
+
+
+void sassert(bool x) {
+    if (!x) { cout << "assertion failed!" << endl; exit(0); }
+}
+
+void add(ll& a, ll b) {
+    if (a >= INF-b) a=INF;
+    else a+=b;
+}
+
+void mul(ll& a, ll b) {
+    if (b==0) a=0;
+    else if (a >= (INF+b-1)/b) a = INF;
+    else a *= b;
+}
+
+
+struct my_map {
+    int s[26];
+    my_map() { memset(s,-1,sizeof(s)); }
+    int count(int idx) { return s[idx-'a'] >= 0; }
+    void clear() { memset(s,-1,sizeof(s)); }
+    
+    int& operator[](int idx) {
+        idx -= 'a';
+        if (s[idx] < 0) s[idx] = 0;
+        return s[idx];
+    }
+};
+
+// a Suffix-Automaton data structure over a string S
+// It is "the smallest DFA which accepts all suffixes of S".
+// Fast linear time construction (constant is like 5 at worst).
+// based on http://e-maxx.ru/algo/suffix_automata. Originally by Blumer et al
+// Code under the Public DomainS
+struct state {
+  // Modified for the present problem (Two Strings Game, HackerRank 20/20 Feb 2014 )
+  // Includes grundy numbers (i.e.: the nim-sum)
+  // Turns out, the nim-sums work nicely for Suffix Automata! (each state is a node)
+  int len, link, grundy;
+  ll paths[MAXG];        // the # of paths from this state downward to any node with grundy g
+  my_map next;
+  state(int a, int b) {
+    len=a; link=b; next.clear();
+    grundy = 0; memset(paths,0,sizeof(paths));
+  }
+  state() { len=link=0; next.clear(); memset(paths,0,sizeof(paths)); }
+};
+
+// add next (alphabetic) character c to the dfa Q (an array of states).
+// K is the number of states. tail is the state representing the entire string
+void sa_add(char c, state* Q, int& K, int& tail) {
+  assert(K<MAXN - 5);
+  int x,y, cur = K++;
+  Q[cur].len = Q[tail].len+1; Q[cur].link = -1;
+  for(x=tail; x>=0 && !Q[x].next.count(c); x = Q[x].link)
+    Q[x].next[c] = cur;
+  if (x<0) Q[cur].link = 0;
+  else {
+    y = Q[x].next[c];
+    if (Q[y].len == Q[x].len + 1) {
+      Q[cur].link = y;
+    } else {
+      int cl = K++;  // clone
+      Q[cl].len = Q[x].len+1; Q[cl].link = Q[y].link;//state(Q[x].len + 1, Q[y].link);
+      Q[cl].next = Q[y].next;
+      for(; x>=0 && Q[x].next[c]==y; x=Q[x].link)
+        Q[x].next[c] = cl;
+      Q[y].link = Q[cur].link = cl;
+    }
+  }
+  tail = cur;
+}
+
+#define MAXL 300002
+bool vis[MAXN];
+bool mex[MAXN][MAXG];        // a temporary array to store reachable grundy numbers (and to find the mex)
+
+void dfs(int i, state* Q) {
+    assert(i<MAXN && i>=0);
+    //if (vis[i]) return;
+    //vis[i] = true;
+    
+    //cout << i << endl;
+    
+    FOR(g,MAXG) mex[i][g] = 0, Q[i].paths[g] = 0;
+    FORALL(c,'a','z') if (Q[i].next.count(c)) {
+        int j = Q[i].next[c];
+        //assert(vis[j]);
+        //dfs(j,Q);
+        mex[i][Q[j].grundy] = true;
+    }
+    
+    Q[i].grundy = -1;
+    FOR(g,MAXG) {
+        if (!mex[i][g]) {
+            Q[i].grundy = g;
+            break;
+        }
+    }
+    
+    assert(Q[i].grundy >= 0);
+    
+    FORALL(c,'a','z') if (Q[i].next.count(c)) {
+        int j = Q[i].next[c];
+        FOR(g,MAXG) {
+            add(Q[i].paths[g], Q[j].paths[g]);
+        }
+    }
+    add(Q[i].paths[Q[i].grundy],1);
+    assert(Q[i].grundy <= 26);
+}
+
+// construct the suffix automaton for the string t
+// store the resulting states into the array Q;
+// return the number of states. Will be no more than 2|t| + 2 (ish?)
+int sa_construct(char* t, state* Q) {
+  int n = strlen(t), first[n+1], next[2*n-1], K = 1, tail = 0;
+  Q[0].len = 0; Q[0].link = -1; Q[0].next.clear();
+  FOR(i,n) sa_add(t[i],Q,K,tail);
+  
+  // do a dfs / dp to compute grundy numbers (nim-sums)
+  // also compute all paths that lead to each grundy number starting from any node
+  //memset(vis,0,sizeof(vis));
+  FORALL(i,0,n) first[i] = -1;
+  FOR(i,K) next[i] = first[Q[i].len], first[Q[i].len] = i;
+  FORB(k,n,0) for(int i = first[k]; i>=0; i = next[i])
+    dfs(i,Q);
+    //Q[Q[i].link].occs += Q[i].occs;
+  
+  
+  //FORB(i,K-1,0) dfs(i,Q);
+  return K;
+}
+
+// Uses for suffix automata (treat it exactly like a trie)
+// All of these run in O(|p|) time!!!!
+
+// find pattern p in the search text (i.e.: suffix automaton Q)
+// return true if p is found in the string
+bool sa_find(state* Q, char* p) {
+  for(int s=0; *p && Q[s].next.count(*p); s = Q[s].next[*p], p++);
+  return ((*p) == 0);  // reached end of string with no errors! we found it
+}
+
+// find a pattern p and return its grundy number.
+// return -1 if not found
+int sa_grundy(state* Q, const char* p) {
+  int s;
+  for(s=0; *p && Q[s].next.count(*p); s = Q[s].next[*p], p++);
+  return (((*p)==0)?Q[s].grundy:-1);
+}
+
+state Qa[MAXN], Qb[MAXN];
+char A[MAXL], B[MAXL];
+char a[MAXL], b[MAXL];
+
+// number of paths in b (starting from state s) that
+//     lead to a grundy number not equal to <grun>
+//ll Q0P[MAXG];
+inline ll get_winning(int grun, state* Q, int s=0) {
+    ll ans = 0;
+    FOR(g,MAXG) if (g != grun){
+        //if (s == 0) add(ans,Q0P[g]);
+        /*else*/
+        add(ans,Q[s].paths[g]);
+    }
+    return ans;
+}
+
+int main () {
+    int N,M;
+    ll K;
+    cin >> N >> M >> K;
+    //FOR(i,N) A[i] = 'a'+(i%2);
+    //FOR(i,N) B[i] = 'b'+(i%2);
+    //FOR(i,N) A[i] = 'a';
+    //FOR(j,M) B[j] = 'b';
+    //A[N-1] = 'b';
+    //B[N-1] = 'a';
+    scanf("%s%s",A,B);
+    //N = strlen(A);
+    //M = strlen(B);
+    
+    sa_construct(A,Qa);
+    sa_construct(B,Qb);
+    //FOR(g,MAXG) Q0P[g] = Qa[0].paths[g];
+    //assert(Kb < MAXN);
+    
+    
+    //assert(Ka < MAXN);
+    //int Kb = sa_construct(B,Qb);
+    //assert(Ka < MAXN && Kb < MAXN);
+    
+    //cout << sizeof(Qa) << " " << Ka  << endl;
+    //return 0;
+    
+    
+    ll total_winning = 0;
+    FOR(g,MAXG) {
+        ll tmp = Qa[0].paths[g];
+        mul(tmp,get_winning(g,Qb));
+        add(total_winning, tmp);
+    }
+    
+    if (total_winning < K) {
+        cout << "no solution" << endl;
+        return 0;
+    }
+
+    // we can now assume there is a solution
+    // first construct a
+    ll num_winning, total_here, tmp, x;
+    int len = 0;
+    int s = 0, news;            // current state in the suffix automaton
+    while(K) {
+        // check the empty case
+        num_winning = get_winning(Qa[s].grundy,Qb);
+        if (num_winning >= K) break;
+        
+        // otherwise, need to add another character
+        // note: we keep the old "num_winning" (counting the number of possibilities we've skipped)
+        //bool found = false;
+        FORALL(c,'a','z') {
+            if (!Qa[s].next.count(c)) continue;
+            news = Qa[s].next[c];
+            total_here = 0;
+            FOR(g,MAXG) {
+                tmp = Qa[news].paths[g];
+                mul(tmp,get_winning(g,Qb));
+                add(total_here, tmp);
+            }
+
+            x = num_winning; add(x,total_here);
+            if (x >= K) {
+                K -= num_winning;
+                a[len++] = c;
+                //found = true;
+                s = news;
+                break;
+            } else {
+                num_winning += total_here;
+            }
+        }
+        
+        // eventually it will find something (since we assumed there is a solution)
+        //assert(found);
+    }
+    
+    // now construct b
+    int a_grundy = Qa[s].grundy;
+    //sa_construct(B,Qa);
+    len = 0;
+    s = 0;            // current state in the suffix automaton
+    while(K) {
+        // check the empty case
+        num_winning = ((Qb[s].grundy == a_grundy)?0:1);
+        if (num_winning >= K) { K -= 1; break; }
+        
+        // now we push a new character to b
+        // note: we keep the old "num_winning" (counting the number of possibilities we've skipped)
+        //bool found = false;
+        FORALL(c,'a','z') {
+            if (!Qb[s].next.count(c)) continue;
+            news = Qb[s].next[c];
+            tmp = get_winning(a_grundy, Qb, news);
+            if (num_winning + tmp >= K) {
+                K -= num_winning;
+                b[len++] = c;
+            //    found = true;
+                s = news;
+                break;
+            } else {
+                num_winning += tmp;
+            }
+        }
+        
+        // eventually it will find something (since we assumed there is a solution
+        //assert(found);
+    }
+    
+    assert(!K);
+    printf("%s\n%s\n",a,b);
+    //cout << a << endl;
+    //cout << b << endl;
+}
