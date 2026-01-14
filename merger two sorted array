@@ -1,0 +1,26 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */  
+    int a;
+    cin>>a;
+    vector<int> arr(a);
+    for(int i=0;i<a;i++){
+        cin >> arr[i];
+    } 
+    int b ;
+    cin >> b;
+    vector<int> brr(b);
+    for(int i=0;i<b;i++){
+        cin>>brr[i];
+    }
+    for(int i =0;i<b;i++){
+        arr.push_back(brr[i]);
+    }
+    sort(arr.begin(), arr.end());
+    for(int a: arr){
+        cout << a <<" ";
+    }
+    return 0;
+}
