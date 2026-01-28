@@ -1,0 +1,30 @@
+include <iostream>
+using namespace std;
+
+int main() {
+    // code here
+    int n ,result;
+    cin >> n;
+    int i=0;
+    int j=1;
+    int k=2;
+    if(n== 0 ){
+        cout<<0;
+    
+        } 
+   else if(n==1){
+    cout <<1;
+    
+    }
+    else{
+    while(k<=n){
+       result = i+j;
+       int temp = i;
+       i= j;
+       j = temp+j;
+       k++;
+    }
+    cout<< result;
+}
+    return 0;
+}
