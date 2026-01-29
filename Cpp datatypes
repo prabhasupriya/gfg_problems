@@ -1,0 +1,24 @@
+class Solution {
+  public:
+    int cppIntType() {
+        // code here
+        int n;
+        cin >> n;
+        return n;
+    }
+
+    char cppCharType() {
+        char m ;
+        cin >> m;
+        return m;
+        // code here
+    }
+
+        
+    float cppFloatType() {
+        // code here
+        float k;
+        cin >>k;
+        return k;
+    }
+};
