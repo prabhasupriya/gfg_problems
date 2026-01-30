@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    // code here
+    int a,b;
+    cin >>a>>b;
+    int ans=0;
+    int m = (a<b)?a:b;
+    for(int i=1;i<=m;i++){
+        if(a%i==0 && b%i==0){
+            ans = i;
+        }
+    }
+cout<<ans;
+    return 0;
+}
+
+===============================÷
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a, b;
+    cin >> a >> b;
+
+    while (b != 0) {
+        int r = a % b;
+        a = b;
+        b = r;
+    }
+
+    cout << a;
+    return 0;
+}
