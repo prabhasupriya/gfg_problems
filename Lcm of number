@@ -1,0 +1,14 @@
+int LCM(int a, int b) {
+
+    // write your code here
+    int lcm = (a> b)? b: a;
+    int ans;
+    // return LCM of a and b
+    for(int i=lcm;i<=a*b ;i=i+lcm){
+        if(i%a== 0 && i%b==0 ){
+            ans =i;
+            break;
+        }
+    }
+    return ans;
+}
