@@ -1,0 +1,16 @@
+class Solution {
+  public:
+    vector<int> deleteElement(vector<int>& arr, int k) {
+        // complete the function
+        vector<int> stackans;
+        for(int i=0;i<arr.size();i++){
+            while(!stackans.empty() && k >0 && stackans.back()<arr[i]){
+                stackans.pop_back();
+                k--;
+            }
+            stackans.push_back(arr[i]);
+        }
+        
+        return stackans;
+    }
+};
