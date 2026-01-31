@@ -1,0 +1,27 @@
+void reverse_dig(int &a, int &b) {
+    // Add your code here.
+   // reverse(a.begin(),a.end());
+   // reverse(b.begin(),b.end());
+   int ar=0;
+   while(a>0){
+       int digit =a%10;
+       ar =ar*10 +digit;
+       a =a/10;
+   }
+   int bn =0;
+   while(b>0){
+       int digit =b%10;
+       bn =bn*10 + digit;
+       b=b/10;
+   }
+   a=ar;
+   b =bn;
+}
+
+void swap(int &a, int &b) {
+    // Add your code here.
+   // swap(a,b);
+   int temp =a;
+   a=b;
+   b=temp;
+}
