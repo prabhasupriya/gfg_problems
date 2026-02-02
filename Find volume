@@ -1,0 +1,11 @@
+int volume(int s) {
+    // code here
+    return pow(s,3);
+}
+
+// Write the second function to
+// return the volume of the rectangular box
+int volume(int l, int w, int h) {
+    return l*w*h;
+    // code here
+}
