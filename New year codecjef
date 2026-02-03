@@ -1,0 +1,10 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int a;
+	cin >> a;
+	cout<< 24-a;
+
+}
