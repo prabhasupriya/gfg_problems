@@ -1,0 +1,14 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+int iq, s;
+cin >> iq >> s;
+if(iq >= s*10){
+    cout <<"YES";
+}
+else{
+    cout <<"NO";
+}
+}
