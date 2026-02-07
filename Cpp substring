@@ -1,0 +1,13 @@
+class Solution {
+  public:
+    string substring(string &s, int L, int R) {
+        // code here
+        string m="";
+        int j =0;
+        for(int i=L;i<=R;i++){
+        m=m+s[i];
+        j++;
+        }
+        return m;
+    }
+};
