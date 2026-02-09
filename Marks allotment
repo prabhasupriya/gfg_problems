@@ -1,0 +1,14 @@
+class Solution {
+  public:
+    int marks(int a) {
+        // code here
+        int ans ;
+        if(a >0 && a<100){
+            ans = a;
+        }
+        else{
+            ans =-1;
+        }
+        return ans;
+    }
+};
