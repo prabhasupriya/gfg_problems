@@ -1,0 +1,8 @@
+struct NODE{
+    double data;
+    union {
+        struct NODE *left ;
+        struct NODE *right;
+    };
+    
+};
