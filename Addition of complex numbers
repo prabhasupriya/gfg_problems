@@ -1,0 +1,21 @@
+class Complex {
+    int x, y;
+
+  public:
+    Complex() {}
+
+    Complex(int real, int imag) {
+        x = real;
+        y = imag;
+    }
+
+    Complex operator+(Complex c) {
+        // Add your code here.
+        Complex temp;
+        temp.x = x+c.x;
+        temp.y = y+c.y;
+        return temp;
+    }
+
+    void display() { cout << x << " + " << y << "i" << endl; }
+};
