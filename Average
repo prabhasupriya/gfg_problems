@@ -1,0 +1,12 @@
+double posAverage(int arr[], int size) {
+
+    // Code here
+    int s=0,c=0;
+    for(int i=0;i<size;i++){
+        if(arr[i] >=0){
+            s += arr[i];
+            c +=1;
+        }
+    }
+    return (s*1.0)/c;
+}
