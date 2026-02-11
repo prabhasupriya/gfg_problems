@@ -1,0 +1,5 @@
+void divideAndPrint(float a, float b) {
+    // code here
+    printf("%.3f", a/b);
+  //  cout << a/b << setprecision(3);
+}
