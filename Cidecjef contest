@@ -1,0 +1,15 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int a;
+	cin >> a;
+	if(((a*4)+100) < 300){
+	    cout << ((a*4)+100);
+	}
+	else{
+	    cout << 300;
+	}
+
+}
