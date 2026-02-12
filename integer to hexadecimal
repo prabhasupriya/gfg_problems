@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a;
+    cin >> a;
+    int i =0;
+char hexadecimal[100];
+    // printing hexadecimal value of a.
+    while(a >0){
+        int temp =0;
+        temp = a%16; 
+        if(temp <10){
+            hexadecimal[i] = temp +48 ; // 0-9 strats form 48
+            i++;
+        }
+        else{
+            hexadecimal[i] = temp + 87;
+            i++;
+        }
+          a= a/16;
+    }
+    for(int  k =i-1;k>=0;k--){
+        cout<<hexadecimal[k];
+    }
+    cout << endl;
+
+    return 0;
+}
