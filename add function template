@@ -1,0 +1,14 @@
+// User function Template for C++
+
+template <class T>
+T largest(T arr[], int n) {
+
+    // code here
+    T m = INT_MIN;
+    for(int i=0;i<n;i++){
+        if(arr[i] > m){
+            m = max(arr[i],m);
+        }
+    }
+    return m;
+}
