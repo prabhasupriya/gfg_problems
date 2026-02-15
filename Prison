@@ -1,0 +1,15 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int d ;
+	cin >>d;
+	if(d >= 7){
+	    cout <<" YES";
+	}
+	else{
+	    cout <<"NO";
+	}
+
+}
