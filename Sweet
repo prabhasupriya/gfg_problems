@@ -1,0 +1,11 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int money ,laddu;
+	cin>> money>>laddu;
+	int l = money-(10*laddu);
+	cout << l /20;
+
+}
