@@ -1,0 +1,15 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+int a,b;
+cin >> a>>b;
+int k =((a+1)*4)+(b*3);
+if(k%8 != 0){
+    cout <<(k/8)+1;
+}
+else{
+    cout <<k/8;
+}
+}
