@@ -1,0 +1,19 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int a;
+	cin >>a;
+	while(a-- >0){
+int money;
+cin >> money;
+if(money >100){
+    cout << money-10;
+}
+else{
+    cout <<money;
+}
+cout <<endl;
+}
+}
