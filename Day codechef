@@ -1,0 +1,15 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int day ;
+	cin >> day;
+	if(day == 17){
+	    cout <<"YAY";
+	}
+	else{
+	    cout << "NO";
+	}
+
+}
