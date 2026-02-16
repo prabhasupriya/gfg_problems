@@ -1,0 +1,14 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+int page;
+cin >> page;
+if((page*5) <= 60){
+    cout <<" YES";
+}
+else{
+    cout <<" NO";
+}
+}
