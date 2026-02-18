@@ -1,0 +1,11 @@
+include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int a,b,c,s;
+	cin >> a>>b>>c>>s;
+	int p =( (c*s)-(a*b));
+	cout <<p;
+
+}
