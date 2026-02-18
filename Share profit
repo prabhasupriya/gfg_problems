@@ -1,0 +1,18 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes hereint 
+	int a,b;
+	cin >> a>>b;
+	if(a < b){
+	    cout <<"Increased";
+	}
+	else if(a >b){
+	    cout <<"Decreased";
+	}
+	else{
+	    cout <<"SAME";
+	}
+
+}
