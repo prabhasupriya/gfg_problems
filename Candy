@@ -1,0 +1,22 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+int n;
+cin >> n;
+while(n-- >0){
+    int b,c;
+    cin >>b >>c;
+    if((2*b) >(5*c)){
+        cout <<"Chocolate";
+    }
+    else if((2*b)==(5*c)){
+        cout <<"Either";
+    }
+    else{
+        cout <<"Candy";
+    }
+    cout << endl;
+}
+}
