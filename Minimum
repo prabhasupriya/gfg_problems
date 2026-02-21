@@ -1,0 +1,17 @@
+include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int a;
+	cin >>a;
+	while(a-- >0){
+	 int b,c;
+	 cin >> b>>c;
+	 b = 7-b;
+	 c=7-c;
+	 int k = min(b,c);
+	 cout <<k<<endl;
+	}
+
+}
