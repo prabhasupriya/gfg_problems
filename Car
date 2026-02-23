@@ -1,0 +1,16 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    long long N, X, Y;
+    if (!(cin >> N >> X >> Y)) return 0;
+
+    long long capacity = Y / X;                  
+    long long vehicles = (N + capacity - 1) / capacity; 
+
+    cout << vehicles << '\n';
+    return 0;
+}
