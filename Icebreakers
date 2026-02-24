@@ -1,0 +1,21 @@
+include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int n;
+	
+cin >>n;
+while(n-- >0){
+    int b,c,d;
+    cin >>b>>c>>d;
+    int k = b-(c*d);
+    if(k <0){
+        cout <<0;
+    }
+    else{
+        cout <<k;
+    }
+    cout <<endl;
+}
+}
