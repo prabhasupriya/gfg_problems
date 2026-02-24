@@ -1,0 +1,16 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int n,m;
+	cin >>n>>m;
+	if(n >=60 && m<= 130){
+	   cout <<"YES";
+	}
+	else{
+	    cout <<"NO";
+	}
+	cout <<endl;
+
+}
