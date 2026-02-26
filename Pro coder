@@ -1,0 +1,16 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int n,m;
+	cin >>n>>m;
+	float k = n/2.0;
+	if(k <= m){
+	    cout <<"NEWBIE"<<endl;
+	}
+	else{
+	    cout<<"PRO"<<endl;
+	}
+
+}
