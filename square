@@ -1,0 +1,22 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int n;
+	cin >>n ;
+	while(n-- >0){
+	    int a;
+	    cin>>a;
+	    int i=1;
+	    int ans=0;
+	    while(i <= a){
+	        if(i*i <=a){
+	            ans = i*i;
+	        }
+	        i++;
+	    }
+	    cout << ans<<endl;
+	}
+
+}
