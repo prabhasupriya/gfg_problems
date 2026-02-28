@@ -1,0 +1,15 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int b;
+	cin>>b;
+	while(b-- >0){
+	    int a,n,c;
+	    cin >> a>>n>>c;
+	    int m =(c/2)/(a*n);
+	    cout <<m <<endl;
+	}
+
+}
