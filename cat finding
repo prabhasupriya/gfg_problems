@@ -1,0 +1,16 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	string k ;
+	cin >> k;
+	sort(k.begin() ,k.end());
+	if(k == "act"){
+	    cout <<"YES" << endl;
+	}
+	else{
+	    cout <<"NO";
+	}
+
+}
