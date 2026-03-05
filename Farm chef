@@ -1,0 +1,26 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+int n;
+cin >>n;
+while(n-- >0){
+    int a;
+    int y;
+    int z;
+    cin >>a>>y>>z;
+    if(z%a!=0 && z%y!=0){
+        cout <<"NONE"<<endl;
+    }
+    else if(z%a==0 && z%y==0){
+        cout <<"ANY"<<endl;
+    }
+    else if(z%a==0){
+        cout <<"CHICKEN"<<endl;
+    }
+    else{
+        cout <<"DUCK"<<endl;
+    }
+}
+}
