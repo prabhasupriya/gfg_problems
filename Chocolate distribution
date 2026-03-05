@@ -1,0 +1,21 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int n;
+	cin>>n;
+	while(n-- >0){
+	    int a;
+	    cin >>a;
+	    int k=0;
+	    if(a%2 == 0){
+	        k= a/2;
+	    }
+	    else{
+	        k =(a/2)+1;
+	    }
+	    cout << k << " "<<a<<endl;
+	}
+
+}
