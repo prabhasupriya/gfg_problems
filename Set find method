@@ -1,0 +1,24 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+int n;
+cin >>n;
+while(n-- >0){
+    int k;
+    cin >>k;
+    set<int> h;
+    int c=0;
+    while(k-- >0){
+        int l ;
+        cin>>l;
+        if(h.find(l) == h.end()){
+            h.insert(l);
+            c++;
+        }
+    }
+    cout <<c<<endl;
+    
+}
+}
