@@ -1,0 +1,15 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+int k ;
+cin >>k;
+while(k-- >0){
+    int a,b,c;
+    cin >>a>>b>>c;
+    int m = min(min(a,b),c);
+    int h =(m*10)+((a-m)*3)+((b-m)*3)+((c-m)*3);
+    cout<<h<<endl;
+}
+}
