@@ -1,0 +1,24 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+int n;
+cin >> n;
+while(n-->0){
+    int a;
+    cin >> a;
+    vector<int> b(a),c(a);
+    for(int i=0;i<a;i++){
+        cin >> b[i];
+    }
+    int s=0;
+    for(int i=0;i<a;i++){
+        cin >>c[i];
+        if(b[i] >c[i]){
+            s += (b[i]-c[i]);
+        }
+    }
+    cout << s<<endl;
+}
+}
