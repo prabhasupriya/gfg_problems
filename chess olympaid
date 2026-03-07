@@ -1,0 +1,17 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+int a,b,c;
+cin >>a>>b>>c;
+int l = (a)+ (b*0.5);
+int o = c + (b*0.5);
+int p = a+b+c;
+if(l+(4-p) >o){
+    cout << "YES" <<  endl;
+}
+else{
+    cout<<"NO" << endl;
+}
+}
