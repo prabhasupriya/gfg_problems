@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+using namespace std;
+void solve(){
+    int n;
+    string k;
+    cin >> n>> k;
+    vector<int> ans(26,0);
+    for(auto& ch : k){
+        ans[ch-'a']++;
+    }
+    for(int i=0;i<26;i++){
+    if(ans[i] >=2){
+        cout << "YES"<<endl;
+        return;
+    }
+    }
+    cout << "NO" << endl;
+}
+int main() {
+	// your code goes here
+	int l;
+	cin >>l;
+	while(l-- >0){
+	    solve();
+	}
+
+
+}
