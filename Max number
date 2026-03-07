@@ -1,0 +1,23 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+int n;
+cin >> n;
+while(n-- >0){
+    int a,b,c,d;
+    cin >>a>>b>>c>>d;
+    int l = max(a,b);
+    int k = max(c,d);
+    if(l<k){
+        cout <<"P"<<endl;
+    }
+    else if(l == k){
+        cout <<"TIE" << endl;
+    }
+    else{
+        cout<<"Q"<<endl;
+    }
+}
+}
