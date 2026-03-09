@@ -1,0 +1,32 @@
+include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	
+	int t;
+	cin >> t;
+	
+	while(t--){
+	    
+	    int a , b , x , y; // here  trade x = units of currency 1 and trade y units of currency 2
+	    
+	    cin >> a >> b >> x >> y ;
+	    
+	    int totalTaka = a+b;
+	    
+	    int everyTradeRevenew = y-x; // because of y > x
+	    
+	    int tradeNo = a / x;  // here how much trade with currancy 1 
+	    
+	   int totalRevenew = (a+b) + ((a/x)*(y-x)) ; // (totalTaka) + ( tradeNo * everyTradeRevenew)
+	    
+	    cout << totalRevenew << '\n';
+	}
+    
+    return 0;
+}
+
+
+
+
+                        //-------- Explanation 
