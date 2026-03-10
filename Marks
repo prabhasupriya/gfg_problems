@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your codgoes here
+	int n;
+	cin >>n;
+	while(n-- >0){
+	    int a,b;
+	    cin >>a>>b;
+	    int v =50-a;
+	    int found =0;
+	    for(int i=b;i<b+6;i++){
+	        for(int j =b;j<b+6;j++){
+	            if((i+j) == v){
+	                found =1;
+	                break;
+	            }
+	        }
+	    }
+	    if(found==0){
+	    cout<<"NO"<<endl;
+	    }
+	    else{
+	        cout<< "YES" << endl;
+	    }
+	    
+	}
+
+}
