@@ -1,0 +1,26 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+int n;
+cin >> n;
+while(n-- >0){
+    int m ;
+    cin >> m;
+    string arr ;
+    
+        cin >>arr;
+    
+    int c1=0;
+    auto it = find(arr.begin(),arr.end(), '0');
+    int index = it-arr.begin();
+    for(int i=index+1;i<m;i++){
+        if(arr[i]=='1'){
+            c1+=1;
+        }
+        
+    }
+    cout <<c1<<endl;
+}
+}
