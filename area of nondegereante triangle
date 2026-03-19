@@ -1,0 +1,19 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+int a;
+cin >>a;
+while(a-- > 0){
+    int b;
+    cin >> b;
+    if(b==3){
+        cout << "-1"<<endl;
+        continue;
+        
+    }
+    int l = b+ b-1 + b-2;
+    cout << l <<endl;
+}
+}
