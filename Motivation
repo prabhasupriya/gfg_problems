@@ -1,0 +1,23 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+int n;
+cin >> n;
+while(n-- >0){
+int a,b;
+cin >> a>> b;
+int m= INT_MIN;
+int l=a;
+while(l-- >0){
+    int c,d;
+    cin>> c >> d;
+    if(b >= c){
+        m = max(m,d);
+    }
+}
+cout << m<<endl;
+}
+}
+
