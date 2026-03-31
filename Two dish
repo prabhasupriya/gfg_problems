@@ -1,0 +1,21 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+int n;
+cin >> n;
+while(n-- >0){
+    int x,a,b,c;
+    cin >> x>> a>> b>> c;
+    int m = a+c;
+        if(m >= x && b >= x){
+          cout <<"YES";  
+        }
+        else{
+            cout <<"NO";
+        }
+    cout << endl;
+}
+}
+
