@@ -1,0 +1,16 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int a;
+	cin >> a;
+	if(a>=5){
+	    cout << a*85 << endl;
+	}
+	else{
+	    cout <<a*100 << endl;
+	}
+
+}
+
