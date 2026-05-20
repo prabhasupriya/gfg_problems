@@ -1,0 +1,16 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+int a,b,c;
+cin >> a>> b>> c;
+if(c<=50){
+    cout <<a;
+}
+else{
+   int d = c-50;
+   cout <<(b*d)+a;
+}
+}
+
