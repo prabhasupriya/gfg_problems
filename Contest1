@@ -1,0 +1,24 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int a,b,c,d;
+	cin >> a>>b>>c>>d;
+	if(a>c){
+	    cout <<"Alice";
+	}
+	else if(a==c && b>d){
+	    cout <<"Alice";
+	}
+	else if(a==c && d>b){
+	    cout <<"Bob";
+	}
+	else if(a <c){
+	    cout <<"Bob";
+	}
+	else{
+	    cout <<"Alice";
+	}
+
+}
