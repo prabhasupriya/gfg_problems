@@ -1,0 +1,17 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int n;
+	cin >>n;
+	int a = n/20;
+	if(n%20 ==0){
+	    cout <<a+1;
+	}
+	else {
+	    cout <<a+1;
+	}
+
+}
+
