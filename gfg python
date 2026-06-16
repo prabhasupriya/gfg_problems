@@ -1,0 +1,12 @@
+#n to power of reverse of the n 
+class Solution:
+def reverseexponentiation(self, n):
+# code here
+
+r =0;
+m =n
+while(m >0):
+dig = m%10
+r =r*10 + dig
+m = int(m/10)
+return n ** r
