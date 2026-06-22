@@ -1,0 +1,6 @@
+pair<int, int> findMinMax(int n, const vector<int>& arr) {
+//write your code here
+int m = *min_element(arr.begin(),arr.end());
+int ma = *max_element(arr.begin(),arr.end());
+return {m,ma};
+}
